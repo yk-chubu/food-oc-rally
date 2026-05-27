@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>食品栄養科学専攻 スマホスタンプラリー</title>
+  <style>
+    :root {
+      --bg: #f7f0e8;
+      --paper: #fffdf9;
+      --card: #ffffff;
+      --text: #2a2a2a;
+      --muted: #736b63;
+      --border: #e7ddd2;
+      --accent: #ea580c;
+      --accent-dark: #c2410c;
+      --ok: #15803d;
+      --warn: #dc2626;
+      --seal: #d62828;
+      --seal-light: #fde8e8;
+      --gold: #f59e0b;
+      --shadow: 0 8px 24px rgba(60, 40, 20, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      background:
+        radial-gradient(circle at top left, #fffaf3 0, #f7f0e8 48%, #f2e8dc 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 16px 44px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .paper-card {
+      background:
+        linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.96)),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 27px,
+          rgba(234, 88, 12, 0.05) 28px
+        );
+    }
+    h1, h2, h3 { line-height: 1.3; margin: 0 0 12px; }
+    h1 { font-size: 1.55rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1rem; }
+    p { margin: 0 0 12px; }
+    .muted { color: var(--muted); font-size: 0.95rem; }
+    .btn, button {
+      display: inline-block;
+      width: 100%;
+      padding: 14px 16px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 8px;
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.18);
+    }
+    .btn.secondary, button.secondary {
+      background: #fff7ed;
+      color: #9a3412;
+      box-shadow: none;
+      border: 1px solid #fed7aa;
+    }
+    .btn.ghost, button.ghost {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+    label { display: block; font-weight: 700; margin: 12px 0 6px; }
+    input[type="text"], select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+      background: #fff;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #fff7ed;
+      color: #c2410c;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      border: 1px solid #fed7aa;
+    }
+    .hero-note {
+      background: #fff7ed;
+      border: 1px dashed #fdba74;
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+    }
+    .rally-sheet {
+      background: var(--paper);
+      border: 2px dashed #e7c6a8;
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: inset 0 0 0 6px rgba(255,255,255,0.55);
+    }
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .progress-badge {
+      font-weight: 800;
+      color: #9a3412;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .stamp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .stamp-slot {
+      position: relative;
+      min-height: 164px;
+      background: linear-gradient(180deg, #ffffff, #fff8f2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px 12px 12px;
+      overflow: hidden;
+    }
+    .stamp-slot .slot-title {
+      padding-right: 72px;
+      min-height: 40px;
+    }
+    .stamp-slot .slot-title strong { display: block; }
+    .slot-hint {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .stamp-placeholder {
+      margin-top: 16px;
+      border: 2px dashed #d7c7b8;
+      border-radius: 18px;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #9f9488;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(215,199,184,0.10),
+        rgba(215,199,184,0.10) 10px,
+        rgba(255,255,255,0.7) 10px,
+        rgba(255,255,255,0.7) 20px
+      );
+    }
+    .stamp-seal {
+      width: 96px;
+      height: 96px;
+      border: 4px solid var(--seal);
+      border-radius: 999px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--seal);
+      background: rgba(255,255,255,0.88);
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      transform: rotate(-13deg);
+      box-shadow: 0 0 0 6px rgba(214, 40, 40, 0.08);
+    }
+    .stamp-seal::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 2px dashed rgba(214, 40, 40, 0.7);
+      border-radius: 999px;
+    }
+    .stamp-seal .seal-main {
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      z-index: 1;
+    }
+    .stamp-seal .seal-sub {
+      font-size: 0.65rem;
+      font-weight: 800;
+      z-index: 1;
+      margin-top: 2px;
+      letter-spacing: 0.06em;
+    }
+    .stamp-mini {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      min-width: 62px;
+      text-align: center;
+      padding: 6px 8px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      background: #f3f4f6;
+      color: #6b7280;
+      border: 1px solid #e5e7eb;
+    }
+    .stamp-mini.ok {
+      background: #ecfdf3;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+    .spot-list { display: grid; gap: 10px; }
+    .spot-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+    }
+    .status {
+      min-width: 90px;
+      text-align: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: #f3f4f6;
+      color: #374151;
+    }
+    .status.ok {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .status.locked {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+    .choice {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+      text-align: left;
+      color: var(--text);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .choice:hover {
+      border-color: #fdba74;
+      background: #fffaf5;
+    }
+    .success { color: var(--ok); font-weight: 800; }
+    .error { color: var(--warn); font-weight: 700; }
+    .small { font-size: 0.9rem; }
+    .result-stamp-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0 18px;
+    }
+    .result-stamp {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      border: 6px solid var(--seal);
+      color: var(--seal);
+      border-radius: 999px;
+      transform: rotate(-12deg);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 0 0 12px rgba(214, 40, 40, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      animation: stampIn 0.45s ease-out;
+    }
+    .result-stamp::before {
+      content: "";
+      position: absolute;
+      inset: 11px;
+      border: 3px dashed rgba(214, 40, 40, 0.7);
+      border-radius: 999px;
+    }
+    .result-stamp .big {
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      z-index: 1;
+    }
+    .result-stamp .mid {
+      font-size: 0.95rem;
+      font-weight: 800;
+      z-index: 1;
+      margin-top: 4px;
+    }
+    .result-stamp .small-line {
+      font-size: 0.72rem;
+      font-weight: 700;
+      z-index: 1;
+      margin-top: 2px;
+      opacity: 0.9;
+    }
+    .burst {
+      background: linear-gradient(180deg, #fff7ed, #ffedd5);
+      border: 1px solid #fed7aa;
+      border-radius: 18px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .burst strong { color: #9a3412; }
+    .confetti {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    .goal-banner {
+      text-align: center;
+      background: linear-gradient(180deg, #fff7ed, #ffffff);
+      border-radius: 18px;
+      border: 1px solid #fed7aa;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .goal-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #9a3412;
+      margin-bottom: 6px;
+    }
+    .note-box {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 14px;
+      padding: 12px;
+    }
+    @keyframes stampIn {
+      0% { transform: scale(1.35) rotate(-18deg); opacity: 0; }
+      65% { transform: scale(0.94) rotate(-11deg); opacity: 1; }
+      100% { transform: scale(1) rotate(-12deg); opacity: 1; }
+    }
+    @media (max-width: 640px) {
+      .stamp-grid { grid-template-columns: 1fr; }
+      .stamp-slot { min-height: 150px; }
+      .stamp-seal { width: 86px; height: 86px; }
+      .result-stamp { width: 150px; height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="app"></div>
+
+  <script>
+    const STORAGE_KEY = "food_oc_rally_v1";
+
+    const SPOTS = {
+      lab1: {
+        title: "酒の匂い体験（30号館1階）",
+        short: "酒の匂い体験",
+        stampText: "酒匂い",
+        description: "この場所では、酒の香りやにおいの感じ方に関する説明を聞いたあと、キーワードを入力してスタンプを獲得してください。",
+        password: "hakua",
+        passwordHint: "キーワードは、酒の匂い体験（30号館1階）で案内されます。",
+        question: "Q1. 食品の商品開発で、最初に考えるとよいものはどれでしょう？",
+        choices: [
+          "A. パッケージの色だけ",
+          "B. 誰に向けた商品か",
+          "C. CMに出る有名人",
+          "D. 店頭POPの大きさ"
+        ],
+        answerIndex: 1,
+        afterText: "酒の匂い体験のスタンプを獲得しました。説明を聞いていただき、ありがとうございます。"
+      },
+      lab2: {
+        title: "食品開発研究施設（しょくラボ・33号館2階）",
+        short: "食品開発研究施設",
+        stampText: "しょく",
+        description: "この場所では、食品開発研究施設（しょくラボ）の説明を聞いたあと、キーワードを入力してスタンプを獲得してください。",
+        password: "icecream",
+        passwordHint: "キーワードは、食品開発研究施設（しょくラボ・33号館2階）で案内されます。",
+        question: "Q2. 食品の品質管理で特に大切なこととして、いちばん近いものはどれでしょう？",
+        choices: [
+          "A. 見た目が派手かどうか",
+          "B. 毎回同じ品質で安全に作れるか",
+          "C. 値段をできるだけ高くすること",
+          "D. SNSで話題になること"
+        ],
+        answerIndex: 1,
+        afterText: "食品開発研究施設（しょくラボ）のスタンプを獲得しました。説明を聞いていただき、ありがとうございます。"
+      },
+      lab3: {
+        title: "食品機能学研究室（津田研・33号館4階）",
+        short: "食品機能学研究室",
+        stampText: "津田研",
+        description: "この場所では、食品機能学研究室（津田研）の説明を聞いたあと、キーワードを入力してスタンプを獲得してください。",
+        password: "kankitsu",
+        passwordHint: "キーワードは、食品機能学研究室（津田研・33号館4階）で案内されます。",
+        question: "Q3. 食品成分を調べる目的として近いものはどれでしょう？",
+        choices: [
+          "A. 見た目だけを良くするため",
+          "B. 体への働きや特徴を確かめるため",
+          "C. 値段を決めるためだけ",
+          "D. 名前を長くするため"
+        ],
+        answerIndex: 1,
+        afterText: "食品機能学研究室（津田研）のスタンプを獲得しました。説明を聞いていただき、ありがとうございます。"
+      },
+      lab4: {
+        title: "機能性作物開発研究室（吉村研・33号館6階）",
+        short: "機能性作物開発研究室",
+        stampText: "吉村研",
+        description: "この場所では、機能性作物開発研究室（吉村研）の説明を聞いたあと、キーワードを入力してスタンプを獲得してください。",
+        password: "vitamin",
+        passwordHint: "キーワードは、機能性作物開発研究室（吉村研・33号館6階）で案内されます。",
+        question: "Q4. 食品栄養科学専攻の学びに特に近い仕事はどれでしょう？",
+        choices: [
+          "A. 食品メーカーでの商品開発や品質管理",
+          "B. 小学校の担任教員",
+          "C. 建築現場の施工管理",
+          "D. 航空機の運航管理"
+        ],
+        answerIndex: 0,
+        afterText: "機能性作物開発研究室（吉村研）のスタンプを獲得しました。説明を聞いていただき、ありがとうございます。"
+      }
+    };
+
+    const app = document.getElementById("app");
+
+    function getUser() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch (e) { return null; }
+    }
+
+    function saveUser(user) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+    }
+
+    function initUser(data) {
+      const user = {
+        nickname: data.nickname || "ゲスト",
+        school: data.school || "",
+        grade: data.grade || "",
+        unlocked: {},
+        completed: {},
+        completedAt: null
+      };
+      Object.keys(SPOTS).forEach(key => {
+        user.unlocked[key] = false;
+        user.completed[key] = false;
+      });
+      saveUser(user);
+      return user;
+    }
+
+    function countCompleted(user) {
+      return Object.values(user.completed).filter(Boolean).length;
+    }
+
+    function allCompleted(user) {
+      return countCompleted(user) === Object.keys(SPOTS).length;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function setRoute(route, params = {}) {
+      const search = new URLSearchParams(params).toString();
+      const url = search ? `#${route}?${search}` : `#${route}`;
+      location.hash = url;
+    }
+
+    function parseHash() {
+      const raw = location.hash.replace(/^#/, "") || "home";
+      const [route, query = ""] = raw.split("?");
+      return { route, params: new URLSearchParams(query) };
+    }
+
+    function getSpotFromSearch() {
+      const searchParams = new URLSearchParams(location.search);
+      return searchParams.get("spot");
+    }
+
+    function makeStampSeal(spot, small = false) {
+      if (small) {
+        return `<div class="stamp-seal" style="width:78px;height:78px;right:12px;bottom:12px;"><div class="seal-main">${escapeHtml(spot.stampText)}</div><div class="seal-sub">STAMP</div></div>`;
+      }
+      return `<div class="stamp-seal"><div class="seal-main">${escapeHtml(spot.stampText)}</div><div class="seal-sub">STAMP</div></div>`;
+    }
+
+    function homeView() {
+      const user = getUser();
+      app.innerHTML = `
+        <div class="card paper-card">
+          <div class="pill">現地QR限定イベント</div>
+          <h1>食品栄養科学専攻 スマホスタンプラリー</h1>
+          <p>研究室や体験ブースをめぐって、キーワードを入力してスタンプを集めましょう。各場所にあるQRコードを読み取ると、その場所限定の入力画面が開きます。</p>
+          <div class="hero-note">スタンプを集めると、カードに「押印」されます。4つ集めてコンプリートを目指しましょう。<br>コンプリートした方には、<strong>受付（30号館1階）</strong>でオリジナルグッズをお渡しします。</div>
+          ${user ? `<button onclick="setRoute('card')">スタンプカードに戻る</button><button class="ghost" onclick="setRoute('register')">新しく登録する</button>` : `<button onclick="setRoute('register')">スタート</button>`}
+        </div>
+        <div class="card">
+          <h2>回る場所</h2>
+          <div class="spot-list">
+            ${Object.values(SPOTS).map(spot => `
+              <div class="spot-item">
+                <div>
+                  <strong>${escapeHtml(spot.title)}</strong>
+                </div>
+                <span class="status locked">現地QR限定</span>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function registerView() {
+      app.innerHTML = `
+        <div class="card paper-card">
+          <h1>参加登録</h1>
+          <p class="muted">個人が特定される情報は入力しなくても参加できます。</p>
+          <label for="nickname">ニックネーム</label>
+          <input id="nickname" type="text" maxlength="20" placeholder="例：みかん" />
+
+          <label for="school">高校名（任意）</label>
+          <input id="school" type="text" maxlength="50" placeholder="例：○○高校" />
+
+          <label for="grade">学年（任意）</label>
+          <select id="grade">
+            <option value="">選択してください</option>
+            <option value="高校1年">高校1年</option>
+            <option value="高校2年">高校2年</option>
+            <option value="高校3年">高校3年</option>
+            <option value="既卒">既卒</option>
+          </select>
+
+          <button id="registerBtn">スタンプカードを作る</button>
+          <button class="ghost" onclick="setRoute('home')">戻る</button>
+        </div>
+      `;
+
+      document.getElementById("registerBtn").addEventListener("click", () => {
+        const nickname = document.getElementById("nickname").value.trim();
+        const school = document.getElementById("school").value.trim();
+        const grade = document.getElementById("grade").value;
+        initUser({ nickname: nickname || "ゲスト", school, grade });
+        setRoute("card");
+      });
+    }
+
+    function cardView() {
+      const user = getUser();
+      if (!user) return setRoute("home");
+      const completedCount = countCompleted(user);
+      app.innerHTML = `
+        <div class="card">
+          <div class="pill">参加者：${escapeHtml(user.nickname)}</div>
+          <h1>あなたのスタンプカード</h1>
+          <p>各施設・研究室に設置されたQRコードを読み取ると、その場所限定のキーワード入力画面が開きます。</p>
+          <p class="muted">この画面からはスタンプ獲得に進めません。現地のQRコードを読んでください。</p>
+        </div>
+
+        <div class="card paper-card">
+          <div class="rally-sheet">
+            <div class="progress-head">
+              <h2 style="margin:0;">スタンプシート</h2>
+              <div class="progress-badge">進捗 ${completedCount}/${Object.keys(SPOTS).length}</div>
+            </div>
+            <div class="stamp-grid">
+              ${Object.entries(SPOTS).map(([id, spot]) => {
+                const done = user.completed[id];
+                return `
+                  <div class="stamp-slot">
+                    <div class="stamp-mini ${done ? 'ok' : ''}">${done ? '達成済み' : '未達成'}</div>
+                    <div class="slot-title">
+                      <strong>${escapeHtml(spot.title)}</strong>
+                      <div class="slot-hint">現地のQRコードから参加</div>
+                    </div>
+                    ${done ? makeStampSeal(spot, true) : `<div class="stamp-placeholder">ここにスタンプが押されます</div>`}
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+          ${allCompleted(user) ? `<button onclick="setRoute('goal')">コンプリート画面を見る</button>` : ``}
+          <button class="secondary" onclick="setRoute('home')">案内画面へ</button>
+        </div>
+      `;
+    }
+
+    function spotView(spotId) {
+      const user = getUser();
+      if (!user) return setRoute("home");
+      const spot = SPOTS[spotId];
+      if (!spot) return setRoute("card");
+
+      if (user.completed[spotId]) {
+        app.innerHTML = `
+          <div class="card paper-card">
+            <div class="pill">${escapeHtml(spot.title)}</div>
+            <h1>このスポットは達成済みです</h1>
+            <p class="success">すでにスタンプを獲得しています。</p>
+            <div class="result-stamp-wrap">${makeStampSeal(spot)}</div>
+            <button onclick="setRoute('card')">スタンプカードに戻る</button>
+          </div>
+        `;
+        return;
+      }
+
+      app.innerHTML = `
+        <div class="card paper-card">
+          <div class="pill">現地QR限定</div>
+          <h1>${escapeHtml(spot.title)}</h1>
+          <p>${escapeHtml(spot.description)}</p>
+          <div class="note-box">
+            <strong>スタンプ獲得方法</strong><br>
+            この場所で説明されたキーワードを入力すると、スタンプが押されます。
+          </div>
+          <label for="password">${escapeHtml(spot.keywordLabel || "この場所で案内されたキーワードを入力してください")}</label>
+          <input id="password" type="text" maxlength="30" placeholder="合言葉を入力" />
+          <p class="muted">${escapeHtml(spot.passwordHint)}</p>
+          <div id="passwordMsg" class="small"></div>
+          <button id="passwordBtn">キーワードを確認する</button>
+          <button class="ghost" onclick="setRoute('card')">スタンプカードに戻る</button>
+        </div>
+      `;
+
+      document.getElementById("passwordBtn").addEventListener("click", () => {
+        const val = document.getElementById("password").value.trim().toLowerCase();
+        const msg = document.getElementById("passwordMsg");
+        if (val === spot.password.toLowerCase()) {
+          user.unlocked[spotId] = true;
+          user.completed[spotId] = true;
+          if (allCompleted(user)) {
+            user.completedAt = new Date().toLocaleString('ja-JP');
+          }
+          saveUser(user);
+          setRoute("result", { spot: spotId, correct: "1" });
+        } else {
+          msg.innerHTML = `<span class="error">合言葉が違います。掲示を確認してください。</span>`;
+        }
+      });
+    }
+
+    function resultView(spotId, isCorrect) {
+      const user = getUser();
+      if (!user) return setRoute("home");
+      const spot = SPOTS[spotId];
+      if (!spot) return setRoute("card");
+      const correctText = "キーワードを確認しました。";
+      const nextButton = allCompleted(user)
+        ? `<button onclick="setRoute('goal')">コンプリート画面へ</button>`
+        : `<button onclick="setRoute('card')">スタンプカードに戻る</button>`;
+
+      app.innerHTML = `
+        <div class="card paper-card">
+          <div class="confetti"><span>🎉</span><span>✨</span><span>🎉</span></div>
+          <div class="burst"><strong>スタンプ獲得！</strong> カードに新しいスタンプが押されました。</div>
+          <div class="result-stamp-wrap">
+            <div class="result-stamp">
+              <div class="big">GET!</div>
+              <div class="mid">${escapeHtml(spot.stampText)}</div>
+              <div class="small-line">${escapeHtml(spot.short)}</div>
+            </div>
+          </div>
+          <h1>${escapeHtml(spot.title)}</h1>
+          <p class="success">スタンプを1つ獲得しました。</p>
+          <p><strong>${correctText}</strong></p>
+          <p>${escapeHtml(spot.afterText)}</p>
+          ${nextButton}
+        </div>
+      `;
+    }
+
+    function goalView() {
+      const user = getUser();
+      if (!user) return setRoute("home");
+      if (!allCompleted(user)) return setRoute("card");
+
+      app.innerHTML = `
+        <div class="card paper-card">
+          <div class="goal-banner">
+            <div class="confetti"><span>🏅</span><span>🎉</span><span>🌟</span><span>🎉</span><span>🏅</span></div>
+            <div class="goal-title">コンプリート達成！</div>
+            <p><strong>${escapeHtml(user.nickname)}</strong> さん、おめでとうございます。</p>
+            <p>この画面を受付で見せると、専攻オリジナルノベルティを受け取れます。</p>
+          </div>
+
+          <div class="rally-sheet">
+            <div class="progress-head">
+              <h2 style="margin:0;">完成したスタンプカード</h2>
+              <div class="progress-badge">4/4 コンプリート</div>
+            </div>
+            <div class="stamp-grid">
+              ${Object.entries(SPOTS).map(([id, spot]) => `
+                <div class="stamp-slot">
+                  <div class="slot-title">
+                    <strong>${escapeHtml(spot.title)}</strong>
+                    <div class="slot-hint">達成済み</div>
+                  </div>
+                  ${makeStampSeal(spot, true)}
+                </div>
+              `).join("")}
+            </div>
+          </div>
+          <p class="muted">達成日時：${escapeHtml(user.completedAt || new Date().toLocaleString('ja-JP'))}</p>
+          <button class="secondary" onclick="setRoute('card')">スタンプカードを見る</button>
+          <button class="ghost" onclick="resetConfirm()">最初からやり直す</button>
+        </div>
+      `;
+    }
+
+    function resetConfirm() {
+      const ok = confirm("保存されたスタンプ情報を消して最初からやり直しますか？");
+      if (ok) {
+        localStorage.removeItem(STORAGE_KEY);
+        setRoute('home');
+      }
+    }
+
+    function render() {
+      const { route, params } = parseHash();
+      if (route === "home") return homeView();
+      if (route === "register") return registerView();
+      if (route === "card") return cardView();
+      if (route === "spot") return spotView(params.get("spot"));
+      if (route === "result") return resultView(params.get("spot"), params.get("correct") === "1");
+      if (route === "goal") return goalView();
+      return homeView();
+    }
+
+    window.setRoute = setRoute;
+    window.resetConfirm = resetConfirm;
+    window.addEventListener("hashchange", render);
+
+    const directSpot = getSpotFromSearch();
+    if (directSpot && !location.hash) {
+      setRoute("spot", { spot: directSpot });
+    } else if (!location.hash) {
+      setRoute("home");
+    } else {
+      render();
+    }
+  </script>
+</body>
+</html>
